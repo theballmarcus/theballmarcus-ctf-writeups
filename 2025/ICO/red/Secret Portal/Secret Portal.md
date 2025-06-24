@@ -28,7 +28,7 @@ struct Carparks {
         ...
     }
 ``` 
-Hence, we can overwrite the address for the second carpark. That means that we can write and read arbitrarily in memory. The executeable is compiled with --no-pie, so the addresses are not random, and we can therefore leak libc addresess. At first, I didn't realise we had gotten a Dockerfile and could find the libc version using that, so I leaked 4 different function addreses and put them into !(libc.rip)[https://libc.rip/]
+Hence, we can overwrite the address for the second carpark. That means that we can write and read arbitrarily in memory. The executeable is compiled with --no-pie, so the addresses are not random, and we can therefore leak libc addresess. At first, I didn't realise we had gotten a Dockerfile and could find the libc version using that, so I leaked 4 different function addreses and put them into [libc.rip](https://libc.rip/)
 First I would find the GOT entry for a function: `readelf -r chall`
 Second, I could overwrite the second car park with the address and read the libc address:
 ```py
@@ -44,7 +44,7 @@ Leaked puts@libc: ...
 Leaked set_vbuf@libc: ...
 Leaked setbuf@libc: ...
 ```
-Putting the functions and offsets into !(libc.rip)[https://libc.rip/] gave me these possible libc versions:
+Putting the functions and offsets into [libc.rip](https://libc.rip/) gave me these possible libc versions:
 ```
 libc6_2.35-0ubuntu3.10_amd64.so  libc6_2.35-0ubuntu3.7_amd64.so
 libc6_2.35-0ubuntu3.4_amd64.so   libc6_2.35-0ubuntu3.8_amd64.so
