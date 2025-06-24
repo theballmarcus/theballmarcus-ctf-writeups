@@ -1,5 +1,5 @@
 # Secret Portal - Pwn
-My only solve for this 5 hour competition! (Not to complain, but all challenges gave the same amount of points even though 2 of the crypto was easily solved with AI)
+My only solve for this 5 hour competition! (Not to complain, but all challenges gave the same amount of points even though 2 of the crypto was easily solved with AI) :)
 
 Description:
 ``` 
