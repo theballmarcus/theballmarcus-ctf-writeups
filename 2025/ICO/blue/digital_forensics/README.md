@@ -1,6 +1,6 @@
-# 11 easy digital "forensics" challenges.
+# 11 Easy Digital "forensics" Challenges.
 
-## 1. **[Phase 1 - VA]** Scanning
+## 1. **[Phase 1 - VA]**: Scanning
 A common step in a vulnerability assessment is to scan for open ports and find running services on those ports. Can you conduct a port scan and find what ports are open on the compromised machine (200.200.200.20)? 
 
 **Submission Format**: <br>
@@ -13,7 +13,7 @@ ICO2025{port number_service name}  *case insensitive*
 ICO2025{80_http}
 
 
-## 2. **[Phase 2 - VA]** Scanning
+## 2. **[Phase 2 - VA]**: Scanning
 Vulnerabilities can sometimes be operating system specific. As such, it is good practice to narrow down as much information as we can when conducting a vulnerability assessment. Are you able to find out what operating system is compromised machine using? 
 
 **Submission Format**: <br>
@@ -29,7 +29,7 @@ Then copy all the versions and submit them until you get a flag.
 ICO2025{Microsoft Windows XP 2019}
 
 
-## 3. **[Phase 1 - VA]** Searching Open Services 
+## 3. **[Phase 1 - VA]**: Searching Open Services 
 Services running on internal networks typically hold a significant importance and may contain sensitive information. Explore the services you found and see if you can find out the purpose of the service running on port 80.
 
 **Submission Format:** <br>
@@ -45,7 +45,7 @@ It's the title of the table on the page.
 ICO2025{IT Team's To-Do List}
 
 
-## 4. **[Phase 1 - VA]** Vulnerable Service 
+## 4. **[Phase 1 - VA]**: Vulnerable Service 
 Are you able to find the CVE number of the vulnerability present in the compromised machine?
 
 **Submission Format**: <br>
@@ -61,7 +61,7 @@ It says the CVE on the website in table.
 ICO2025{CVE_2024_4577}
 
 
-## 5. **[Phase 1 - VA]** Metasploit 
+## 5. **[Phase 1 - VA]**: Metasploit 
 Exploit the vulnerability!
 
 **Submission Format**: <br>
@@ -81,7 +81,7 @@ use exploit/windows/http/php_cgi_arg_injection_rce_cve_2024_4577
 ICO2025{php_cgi_arg_injection_rce_cve_2024_4577}
 
 
-## 6. **[Phase 2 - Forensics]** Analysing Pcap 
+## 6. **[Phase 2 - Forensics]**: Analysing Pcap 
 Analyse the packet capture file given in <br>
 C:\Users\Marcus-WebAdmin\Documents\Network Captures. 
 
@@ -109,7 +109,7 @@ It was pretty obviosly this IP that was sending malicious traffic.
 ICO2025{192.168.12.35}
 
 
-## 7. **[Phase 2 - Forensics]** Attacker Malware 
+## 7. **[Phase 2 - Forensics]**: Attacker Malware 
 It seems like the attacker might have uploaded some of his own files on the compromised machine. Are you able to identify the frame number where the request is initiated?
 
 **Submission Format**: <br>
@@ -124,7 +124,7 @@ From that, I knew the flag would be around package 4400. I then found the reques
 ICO2025{4395}
 
 
-## 8. **[Phase 2 - Forensics]** Export Objects 
+## 8. **[Phase 2 - Forensics]**: Export Objects 
 Try to export out important objects/files found in the pcap file!
 
 **Submission Format**: <br>
@@ -139,7 +139,7 @@ The same file from the file export... ```persist.py```
 ICO2025{persist.py}
 
 
-## 9. **[Phase 2 - Forensics]** Attacker's Malware Part 2 
+## 9. **[Phase 2 - Forensics]**: Attacker's Malware Part 2 
 It seems like the attacker might have uploaded some of his own files on the compromised machine. Are you able to find it and generate out its md5 digest?
 
 **Submission Format**: <br>
@@ -154,7 +154,7 @@ md5sum persist.py
 ICO2025{3b3ea2f2378fbcc04f3a6b95049e8b81}
 
 
-## 10. **[Phase 3 - AP]** Malware Analysis 
+## 10. **[Phase 3 - AP]**: Malware Analysis 
 The malware have attempted to make network connection(s), what IP address and port is it trying to connect to?
 
 **Submission Format**: <br>
@@ -178,7 +178,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ICO2025{192.168.12.135:4242}
 
 
-## 11. **[Phase 3 - AP]** Malware Analysis Part 2 
+## 11. **[Phase 3 - AP]**: Malware Analysis Part 2 
 What is the name of the key that was created by the malware?
 
 **Submission Format**: <br>
