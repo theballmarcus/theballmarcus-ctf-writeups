@@ -1,0 +1,3 @@
+# Cross-site WebSocket hijacking
+[Soltion HTML](./assets/Cross-site%20WebSocket%20hijacking.html)
+Since the server doesn't have any csrf protection, when a user visits our page, it will open a ws to the lab, which sends all the previous messages after recieving `READY` over the ws. Therefore, we just need to make a ws and exfiltrate the data using requests to out exploit server, whereafter we can see the credentials, because Carlos retrieved them using the chat.

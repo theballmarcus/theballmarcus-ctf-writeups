@@ -1,0 +1,4 @@
+# SameSite Lax bypass via method override
+The description of the lab describes that we have to overwrite the method. First, I captured the change email request using burp suite - this showed that the backend recieves a `POST` request when it changes the email. After that, I experimented with sending a GET request but with setting `_method=METHOD` get parameter. By sending requests with different _method parameters, I first discovered that the backend will interpret my GET request as whatever method I pass. I then discovered that `GET, PATCH, DELETE, PUT` was dissalowed. After that, I tried overwriting the POST parameter with POST even though the form is post, and that solved the lab. 
+So when the backend recieves a GET request with _method parameter, I can change how to server interprets the parameter.
+[Soltution](./assets/SameSite%20Lax%20bypass%20via%20method%20override.html)

