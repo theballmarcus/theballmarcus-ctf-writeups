@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Just Cat The Moon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='meow.css') }}">
+    <style>
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 410px;
+            margin-bottom: 2em;
+        }
+        .earth, .moon, .cat, .flag {
+            position: absolute;
+            z-index: 1;
+        }
+        .earth {
+            bottom: 0;
+            left: 15%;
+            width: 190px;
+        }
+        .moon {
+            bottom: 120px;
+            right: 15%;
+            width: 120px;
+        }
+        .cat {
+            bottom: 110px;
+            left: 20%;
+            width: 90px;
+            z-index: 2;
+            transition: all 1s cubic-bezier(.42,1.41,.39,.99);
+        }
+        .flag {
+            bottom: 170px;
+            right: 17%;
+            width: 60px;
+            z-index: 2;
+            transition: all 1s cubic-bezier(.42,1.41,.39,.99);
+            opacity: 0.7;
+        }
+        .on-moon .cat {
+            left: 75%;
+            bottom: 220px;
+        }
+        .on-moon .flag {
+            right: 15%;
+            bottom: 245px;
+            opacity: 1;
+            filter: drop-shadow(0 0 6px #ffeebc);
+        }
+        .on-earth .cat {
+            left: 20%;
+            bottom: 110px;
+        }
+        .on-earth .flag {
+            right: 17%;
+            bottom: 170px;
+            opacity: 0.7;
+        }
+        .flag-gripped {
+            animation: grip 0.6s ease;
+        }
+        @keyframes grip {
+            0% {transform: scale(1);}
+            60% {transform: scale(1.12) rotate(-8deg);}
+            100% {transform: scale(1);}
+        }
+        #weather-popup {
+            display:none;
+            position:fixed;
+            top:20px;
+            right:20px;
+            background:#333;
+            color:#fff;
+            padding:1em;
+            border-radius:5px;
+            z-index:1000;
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        function showWeatherPopup(show=true) {
+            document.getElementById('weather-popup').style.display = show ? 'block' : 'none';
+        }
+        function boostGrip() {
+            showWeatherPopup(true);
+            fetch('/sboost', {method: 'POST'})
+              .then(res => res.json())
+              .then(data => {
+                alert(data.message);
+                showWeatherPopup(false);
+              })
+              .catch(() => showWeatherPopup(false));
+        }
+
+        function travelToMoon() {
+            fetch('/travel', {method: 'POST'})
+              .then(res => res.json())
+              .then(data =>{ 
+                console.log('Nothing to see here')
+            });
+            document.querySelector('.scene').classList.add('on-moon');
+            document.querySelector('.scene').classList.remove('on-earth');
+        }
+
+        function getFlag() {
+            fetch('/flag')
+              .then(res => res.json())
+              .then(data => {
+                if (data.flag) {
+                    alert("🎉 Flag: " + data.flag);
+                    const flag = document.querySelector('.flag');
+                    flag.classList.add('flag-gripped');
+                    setTimeout(() => flag.classList.remove('flag-gripped'), 700);
+                } else {
+                    alert(data.message);
+                }
+              });
+        }
+
+        window.onload = () => {
+            document.querySelector('.scene').classList.add('on-earth');
+        };
+    </script>
+</head>
+<body>
+    <h1>🚀 Just Cat The Moon 🐱🌕</h1>
+    <p>Oh no, meow! I've forgotten my flag on the moon. Help me hold onto it!</p>
+    <div id="weather-popup">Checking weather on the moon...</div>
+    <div class="scene">
+        <!-- Earth SVG -->
+        <svg class="earth" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="56" fill="#3fa7d6" stroke="#1f4e78" stroke-width="8"/>
+            <ellipse cx="75" cy="65" rx="32" ry="13" fill="#73dda8"/>
+            <ellipse cx="45" cy="40" rx="12" ry="8" fill="#fffbe8"/>
+        </svg>
+        <!-- Moon SVG -->
+        <svg class="moon" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#f7eedc" stroke="#bba76a" stroke-width="6"/>
+            <circle cx="68" cy="36" r="9" fill="#e9dcc3"/>
+            <circle cx="36" cy="65" r="6" fill="#e9dcc3"/>
+            <circle cx="54" cy="70" r="4" fill="#e9dcc3"/>
+        </svg>
+        <!-- Cat SVG (simple, stylized) -->
+        <svg class="cat" viewBox="0 0 60 90">
+            <ellipse cx="30" cy="60" rx="22" ry="30" fill="#b38b6d"/>
+            <ellipse cx="30" cy="43" rx="12" ry="14" fill="#fffbe8"/>
+            <polygon points="10,30 20,10 22,32" fill="#b38b6d"/>
+            <polygon points="50,30 40,10 38,32" fill="#b38b6d"/>
+            <circle cx="24" cy="48" r="2.6" fill="#222"/>
+            <circle cx="36" cy="48" r="2.6" fill="#222"/>
+            <ellipse cx="30" cy="56" rx="3" ry="1.5" fill="#e9dcc3"/>
+        </svg>
+        <!-- Flag SVG -->
+        <svg class="flag" viewBox="0 0 40 60">
+            <rect x="18" y="10" width="4" height="40" fill="#a99367"/>
+            <rect x="22" y="14" width="14" height="12" fill="#e34141"/>
+            <circle cx="29" cy="20" r="3.5" fill="#fffbe8"/>
+        </svg>
+    </div>
+    <button onclick="boostGrip()">💪 Boost Grip Strength</button>
+    <button onclick="travelToMoon()">🌕 Travel to Moon</button>
+    <button onclick="getFlag()">🚩 Grip Flag</button>
+</body>
+</html>

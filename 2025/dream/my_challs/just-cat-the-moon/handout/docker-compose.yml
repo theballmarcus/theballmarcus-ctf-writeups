@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  just-cat-the-moon:
+    build: .
+    ports:
+      - "42069:42069"
+    restart: unless-stopped
