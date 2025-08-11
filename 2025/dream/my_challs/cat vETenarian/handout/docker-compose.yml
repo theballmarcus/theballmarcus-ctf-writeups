@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  cat_vetenarian:
+    build: .
+    ports:
+      - "7331:7331"
+    restart: unless-stopped
